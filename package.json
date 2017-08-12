@@ -1,0 +1,22 @@
+{
+  "name": "blog-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Simonmaxwell/blog-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Simonmaxwell/blog-api/issues"
+  },
+  "homepage": "https://github.com/Simonmaxwell/blog-api#readme",
+  "dependencies": {
+    "uuid": "^3.1.0"
+  }
+}
