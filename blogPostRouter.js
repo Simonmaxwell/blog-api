@@ -24,7 +24,7 @@ router.post('/', jsonParser, (req, res) => {
     res.status(201).json(item);
 });
 
-router.put('/:id', jsonParser. (req, res) => {
+router.put('/:id', jsonParser, (req, res) => {
 	const requiredFields = ['id', 'title', 'content', 'author', 'publishDate'];
 	for (let i=0; i<requiredFields.length; i++) {
 		const field = requiredFields[i];
@@ -36,8 +36,8 @@ router.put('/:id', jsonParser. (req, res) => {
 	}
 	if (req.params.id !== req.body.id) {
     	const message = (
-    		`Request path id (${req.params.id}) and request body id `
-    		`(${req.body.id}) must match`);
+    		`Your dang id: (${req.params.id}) doesn't match this id: `
+    		`(${req.body.id}) ya doofus!`);
     	console.error(message);
    		return res.status(400).send(message);
   }
@@ -51,6 +51,14 @@ router.put('/:id', jsonParser. (req, res) => {
  	 });
   	res.status(204).end();
 });
+
+router.delete('/:id', jsonParser, (req, res) => {
+	BlogPosts.delete(req.params.id);
+	console.log('Your legacy has been scrubbed from this server.')
+	res.status(204).end();
+});
+
+
 
 module.exports = router;
 
