@@ -6,6 +6,11 @@ const jsonParser = bodyParser.json();
 
 const {BlogPosts} = require('./models');
 
+BlogPosts.create(
+  "Chickens think you're dumb too.", "It's true", "Jethro");
+BlogPosts.create(
+  "Visions of a dead god", "I wouldn't believe it either", "Dr Melamed");
+
 router.get('/', (req, res) => {
 	res.json(BlogPosts.get());
 });
