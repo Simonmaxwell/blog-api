@@ -15,9 +15,9 @@ router.post('/', jsonParser, (req, res) => {
 	for (let i=0; i<requiredFields.length; i++) {
 		const field = requiredFields[i];
 		if (!(field in req.body)) {
-  			const message = `Missing \`${field}\` in request body`
-  			console.error(message);
-  			return res.status(400).send(message);
+  		const message = `Missing \`${field}\` in request body`
+  		console.error(message);
+  		return res.status(400).send(message);
 		}
 	}
 	const item = BlogPosts.create(req.body.title, req.body.content, req.body.author);
@@ -30,27 +30,27 @@ router.put('/:id', jsonParser, (req, res) => {
 		const field = requiredFields[i];
 		if (!(field in req.body)) {
 			const message = `Missing \`${field}\` in request body`
-  			console.error(message);
-  			return res.status(400).send(message);
+  		console.error(message);
+  		return res.status(400).send(message);
 		}
 	}
 	if (req.params.id !== req.body.id) {
-    	const message = (
-    		`Your dang id: (${req.params.id}) doesn't match this id: `
-    		`(${req.body.id}) ya doofus!`);
-    	console.error(message);
-   		return res.status(400).send(message);
+    const message = (
+    	`Your dang id: (${req.params.id}) doesn't match this id: `
+    	`(${req.body.id}) ya doofus!`);
+    console.error(message);
+   	return res.status(400).send(message);
   }
-    console.log(`Updating blog post with id \`${req.params.id}\``);
-  	const updatedItem = BlogPosts.update({
-    	id: req.params.id,
-    	title: req.body.title,
-    	content: req.body.content,
-   		author: req.body.author,
-    	publishDate: req.body.publishDate
- 	 });
-  	res.status(204).end();
-});
+  console.log(`Updating blog post with id \`${req.params.id}\``);
+  const updatedItem = BlogPosts.update({
+  	id: req.params.id,
+  	title: req.body.title,
+  	content: req.body.content,
+ 		author: req.body.author,
+  	publishDate: req.body.publishDate
+  });
+  res.status(200).json(updatedItem);
+})
 
 router.delete('/:id', jsonParser, (req, res) => {
 	BlogPosts.delete(req.params.id);
